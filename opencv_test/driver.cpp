@@ -9,7 +9,7 @@ using namespace cv;
 driver::driver(QWidget *parent) : QMainWindow(parent), ui(new Ui::driver) {
     ui->setupUi(this);
     try {
-        cap.open("rtsp://sdsuparking:aztecs@192.168.1.6:8000");
+        cap.open("/Users/brye/Desktop/PS12 Front 547PM.MP4");
         if (!cap.isOpened()) {  // if not success, exit program
         cout << "Cannot open the video cam" << endl;
         }
@@ -31,10 +31,8 @@ driver::~driver()
 
 void driver::showVideo() {
     Mat cam;
-    bool bSuccess = cap.read(cam); // read a new frame from video
-    if (!bSuccess) { //if not success, break loop
-       cout << "Cannot read a frame from video stream" << endl;
-    }
-    QImage qcam((uchar*)cam.data, cam.cols, cam.rows, cam.step, QImage::Format_RGB888);
-    ui->lbl_vid->setPixmap(QPixmap::fromImage(qcam));
+    cap >> cam;
+    cv::resize(cam, cam, Size(640, 360), 0, 0, INTER_CUBIC);
+    QImage qcam((uchar*) cam.data, cam.cols, cam.rows, static_cast<int>(cam.step), QImage::Format_RGB888);   //RBG values are inverted
+    ui->lbl_vid->setPixmap(QPixmap::fromImage(qcam.rgbSwapped()));
 }

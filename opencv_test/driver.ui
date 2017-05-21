@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>815</width>
-    <height>610</height>
+    <width>719</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QLabel" name="lbl_vid">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
+      <x>40</x>
+      <y>20</y>
       <width>640</width>
-      <height>480</height>
+      <height>360</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -36,7 +36,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>815</width>
+     <width>719</width>
      <height>22</height>
     </rect>
    </property>
